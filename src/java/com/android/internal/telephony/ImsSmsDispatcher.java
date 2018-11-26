@@ -32,6 +32,7 @@ import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.GsmAlphabet.TextEncodingDetails;
+import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.util.SMSDispatcherUtil;
 
 import java.util.HashMap;
@@ -307,7 +308,7 @@ public class ImsSmsDispatcher extends SMSDispatcher {
                     token,
                     tracker.mMessageRef,
                     getFormat(),
-                    smsc != null ? new String(smsc) : null,
+                    smsc != null ? IccUtils.bytesToHexString(smsc) : null,
                     isRetry,
                     pdu);
         } catch (ImsException e) {
